@@ -1,0 +1,74 @@
+{
+  "user": [
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "roleId": 1,
+      "id": 1
+    },
+    {
+      "username": "doctor",
+      "email": "doctor@gmail.com",
+      "password": "123456",
+      "roleId": 2,
+      "id": 2
+    },
+    {
+      "username": "patient",
+      "email": "patient@gmail.com",
+      "password": "123456",
+      "roleId": 3,
+      "id": 3
+    },
+    {
+      "username": "bishoy",
+      "email": "boshoy@gmail.com",
+      "password": "123456",
+      "roleId": 2,
+      "id": 4
+    }
+  ],
+  "login": [
+    {
+      "username": "test",
+      "roleId": "doctor",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "clinic": [
+    {
+      "name": "clinic1",
+      "address": "el maadi",
+      "id": 1
+    },
+    {
+      "name": "clinic2",
+      "address": "el maadi",
+      "id": 2
+    }
+  ],
+  "appoientment": [
+    {
+      "date": "15/6/2023",
+      "type": "clinic",
+      "time": "13:00 PM",
+      "user": 1,
+      "id": 1
+    },
+    {
+      "date": "30/6/2023",
+      "type": "doctor",
+      "time": "15:00 PM",
+      "user": 1,
+      "id": 2
+    },
+    {
+      "date": "07/07/2023",
+      "type": "clinic",
+      "time": "16:00 PM",
+      "id": 3
+    }
+  ]
+}

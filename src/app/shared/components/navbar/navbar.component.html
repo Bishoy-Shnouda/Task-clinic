@@ -1,0 +1,37 @@
+<mat-toolbar color="primary" class="navbar navbar-default py-2" dir="rtl">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLinkActive="active" routerLink="welcome">
+        <img src="../../../assets/images/local_library_white_24dp.svg" alt="" />
+        Clinic
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="d-flex align-items-center">
+      <ul class="nav navbar-right d-flex align-items-center">
+        <li *ngIf="isAdmin" routerLinkActive="active">
+          <a routerLink="myHealth/clinic">clinic</a>
+        </li>
+        <li *ngIf="isAdmin" routerLinkActive="active">
+          <a routerLink="myHealth/doctor">doctor</a>
+        </li>
+        <li *ngIf="isPatient || isAdmin" routerLinkActive="active">
+          <a routerLink="myHealth/appoientment">Appointment </a>
+        </li>
+
+        <li *ngIf="isLoged" routerLinkActive="active" (click)="logout()">
+          <a routerLink="/login">Logout</a>
+        </li>
+        <li *ngIf="!isLoged" routerLinkActive="active">
+          <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="!isLoged" routerLinkActive="active">
+          <a routerLink="/register">Sign-in</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</mat-toolbar>

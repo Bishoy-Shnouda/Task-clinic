@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Doctor / Clinic</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of appointments">
+          <td>{{ item.type }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.time }}</td>
+          <td class="d-flex" style="justify-content: center">
+            <button class="btn btn-danger" (click)="deleteAppointment(item.id)">
+              Delete
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-trash ms-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"
+                />
+                <path
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#myModal"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-plus-square-fill ms-2"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+      />
+    </svg>
+    Book Now
+  </button>
+</div>
+
+<!-- Popup window -->
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal header -->
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+        <h5 class="modal-title" id="myModalLabel">Booking</h5>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!-- Popup content -->
+        <select class="form-select mb-2" [(ngModel)]="type">
+          <option value="" disabled selected>Select an Booking option</option>
+          <option value="clinic">Clinic</option>
+          <option value="doctor">Doctor</option>
+        </select>
+
+        <select class="form-select" [(ngModel)]="time">
+          <option value="" disabled selected>Select a time</option>
+          <option *ngFor="let Time of timeOptions" [value]="Time">
+            {{ Time }}
+          </option>
+        </select>
+
+        <div class="mb-3 mt-2">
+          <input
+            type="date"
+            class="form-control"
+            aria-describedby="Help"
+            [(ngModel)]="date"
+          />
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!type || !time || !date"
+          (click)="newAppointment()"
+          data-bs-dismiss="modal"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
